@@ -1,8 +1,8 @@
-// [FEITO] capturar o elemento html em que vamos inserir os baloes
-// [FEITO] adicionar o balão no container
-// [FEITO] determinar um intervalo de tempo para adicionar os baloes sequencialmente
+
 
 const containerBaloes = document.querySelector(".container-baloes");
+
+const startBtn = document.querySelector("button");
 
 function adicionarBalao() {
   const elementoImg = document.createElement("img");
@@ -16,14 +16,23 @@ function adicionarBalao() {
   elementoImg.style.left = valorLeft + "vw";
   elementoImg.style.top = valorTop + "vh";
 
-  console.log("left=>", valorLeft);
-  console.log("Top=>", valorTop);
-
   containerBaloes.appendChild(elementoImg);
 
-  console.log("Elemento Img =>", elementoImg);
+  elementoImg.addEventListener("click", function () {
+    elementoImg.remove();
+  
+  });
 }
 
-setInterval(adicionarBalao, 3000); //3000 milesegundos = 3 segundos
+startBtn.addEventListener("click", function () {
+  startBtn.remove();
 
-// adicionarBalao();
+  containerBaloes.style.display = "block";
+
+  setInterval(adicionarBalao, 2000);
+});
+
+
+
+
+
