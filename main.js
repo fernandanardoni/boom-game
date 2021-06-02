@@ -1,16 +1,22 @@
-
-
 const containerBaloes = document.querySelector(".container-baloes");
 
 const startBtn = document.querySelector("button");
 
 const score = document.querySelector("span");
 
+const elementoImg = document.createElement("img");
+
 let counter = 0;
 
-function adicionarBalao() {
+startBtn.addEventListener("click", function () {
+  startBtn.remove();
 
-  const elementoImg = document.createElement("img");
+  containerBaloes.style.display = "block";
+
+  setTime;
+});
+
+function adicionarBalao() {
 
   elementoImg.setAttribute("src", "./assets/baloon.png");
   elementoImg.setAttribute("class", "balao");
@@ -25,52 +31,24 @@ function adicionarBalao() {
 
   setLimitBalloon(4);
 
-  
-  elementoImg.addEventListener("click", () => removeBalloon(elementoImg)); 
+  elementoImg.addEventListener("click", () => removeBalloon(elementoImg));
 }
-
 
 function setLimitBalloon(limit) {
-
-  const balloonElement = document.querySelectorAll(".balao")
-  const arrOfBalloon = Array.from(balloonElement)
-  
+  const balloonElement = document.querySelectorAll(".balao");
+  const arrOfBalloon = Array.from(balloonElement);
 
   if (arrOfBalloon.length == limit) {
-    alert("Você perdeu! :(")
-    restartGame();
+    alert("Você perdeu! :(");
   }
-  
 }
-
-function restartGame() {
-
-  startBtn.style.display = "flex";
-}
-
-
 
 function removeBalloon(element) {
-
   containerBaloes.removeChild(element);
   counter = counter + 1;
   console.log(counter);
   score.innerText = counter;
-
 }
 
 const setTime = setInterval(adicionarBalao, 2000);
-
-
-startBtn.addEventListener("click", function () {
-  startBtn.remove();
-
-  containerBaloes.style.display = "block";
-
-  setTime;
-});
-
-
-
-
 
