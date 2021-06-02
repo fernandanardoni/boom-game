@@ -23,7 +23,29 @@ function adicionarBalao() {
 
   containerBaloes.appendChild(elementoImg);
 
+  setLimitBalloon(4);
+
+  
   elementoImg.addEventListener("click", () => removeBalloon(elementoImg)); 
+}
+
+
+function setLimitBalloon(limit) {
+
+  const balloonElement = document.querySelectorAll(".balao")
+  const arrOfBalloon = Array.from(balloonElement)
+  
+
+  if (arrOfBalloon.length == limit) {
+    alert("Você perdeu! :(")
+    restartGame();
+  }
+  
+}
+
+function restartGame() {
+
+  startBtn.style.display = "flex";
 }
 
 
@@ -37,7 +59,7 @@ function removeBalloon(element) {
 
 }
 
-
+const setTime = setInterval(adicionarBalao, 2000);
 
 
 startBtn.addEventListener("click", function () {
@@ -45,7 +67,7 @@ startBtn.addEventListener("click", function () {
 
   containerBaloes.style.display = "block";
 
-  setInterval(adicionarBalao, 2000);
+  setTime;
 });
 
 
